@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box{width:300px; height:300px; background-color: red;}
+    </style>
+</head>
+<body>
+    <script>
+        function colorChange()
+        {
+            var chk1 = document.getElementById('checked_01');
+            var box = document.getElementById('box');
+
+            if (chk1.checked) 
+            {
+                box.style.backgroundColor = "blue";
+                window.open("popup.html","greenbox","width=250,height:250");
+            } else {
+                box.style.backgroundColor = "red";
+            }
+        }
+
+        function no(){
+            var chk2 = document.getElementById('checked_02');
+
+            if(chk2.checked){
+                alert('땡')
+            }
+        }
+
+        
+    </script>
+    <input type="checkbox" id="checked_01" name="chk" onclick="colorChange();">
+    <label for ="checked_01">가</label>
+    <input type="checkbox" id="checked_02" name="chk" onclick="no();">
+    <label for ="checked_02">나</label>
+    <input type="checkbox" id="checked_02" name="chk" onclick="no();">
+    <label for ="checked_03">다</label>
+    <input type="checkbox" id="checked_02" name="chk" onclick="no();">
+    <label for ="checked_04">라</label>
+
+    <div id="box">
+
+    </div>
+
+    <button id="chk_answer">정답확인하기</button>
+</body>
+</html>
