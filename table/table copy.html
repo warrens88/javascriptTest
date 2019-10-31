@@ -21,6 +21,7 @@ $(document).ready(function(){
     var $plus = $('#plus');
     var $del = $('#delete');
     var $table = $('#table_type_1');
+    var $list = $('#list');
     var html2 = '<tr><td><input type="checkbox" name="chk"></td><td><input></td><td><input></td><td><input></td></tr>';
     var checkbox = $("input[name=user_chk]:checked");
     
@@ -54,8 +55,6 @@ $(document).ready(function(){
         $('#table_type_1 tbody tr').has('input[name="chk"]:checked').remove()
     });       
 });
-
-
 </script>
 
 
@@ -72,7 +71,7 @@ $(document).ready(function(){
                     <th>3</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody id="list">
                 <tr>
                     <td><input type="checkbox" name="user_chk"></td>
                     <td>
