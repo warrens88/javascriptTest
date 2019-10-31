@@ -9,7 +9,8 @@
     <title>Document</title>
     <style>
         table{border-collapse: collapse;}
-        table, th, td{border:1px solid #333333; text-align:center; padding: 5px 5px; width:100px!important;}
+        table, th, td{border:1px solid #333333; text-align:center; }
+        th, td{width:100px; padding: 5px 5px; }
     </style>
 </head>
 
@@ -20,10 +21,10 @@ $(document).ready(function(){
     var $plus = $('#plus');
     var $del = $('#delete');
     var $table = $('#table_type_1');
-    var html2 = '<tr><td><input type="checkbox"></td><td><input></td><td><input></td><td><input></td></tr>';
-
+    var html2 = '<tr><td><input type="checkbox" name="chk"></td><td><input></td><td><input></td><td><input></td></tr>';
     var checkbox = $("input[name=user_chk]:checked");
     
+    // 체크박스 전체선택
     $('#chk_all').click(function(){
          if($("#chk_all").prop("checked")){
             $("input[type=checkbox]").prop("checked",true); 
@@ -32,22 +33,29 @@ $(document).ready(function(){
         }
     });
 
+    // 행추가 행삭제
     $plus.click(function() {
-            //var html = $('.tableType_1').find("tfooter").html();
-            $('#table_type_1 tbody').append('<tr><td><input type="checkbox"></td><td><input></td><td><input></td><td><input></td></tr>');
-            //$('#table_type_1 tbody').append(html);
-            //$('#table_type_1 tbody').append(html2);
-        });
+        if($('#table_type_1 tbody tr').length > 10){
+            alert('더 이상 추가 할수 없습니다.');
+        } else {
+            $('#table_type_1 tbody').append(html2);
+        }  
+    });
     $del.click(function() {
-        //alert($('#table_type_1 tbody tr').size());
-            if ( $('#table_type_1 tbody tr').size > 0 ) {
-                $('#table_type_1 tbody tr:last').remove();
-            } else {
-                alert("삭제할 내용이 없습니다.");
-            }
-            
-        });
+        if($('#table_type_1 tbody tr').length <= 1){
+            alert('삭제할 내용이 없습니다.');
+            return false;
+        } 
+
+        $('#table_type_1 tbody tr:last').remove(); 
+    }); 
+
+    $del.on("click",function(){
+        $('#table_type_1 tbody tr').has('input[name="chk"]:checked').remove()
+    });       
 });
+
+
 </script>
 
 
